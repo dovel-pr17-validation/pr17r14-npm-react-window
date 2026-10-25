@@ -1,0 +1,7 @@
+/dist
+/docs
+/generated
+/public
+
+README.md
+integrations/next/.next

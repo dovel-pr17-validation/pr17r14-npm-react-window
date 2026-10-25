@@ -1,0 +1,38 @@
+import {
+  Block,
+  Box,
+  Code,
+  ExternalLink,
+  Header,
+  LoadingSpinner
+} from "react-lib-tools";
+import RtlGridMarkdown from "../../../public/generated/examples/RtlGrid.json";
+import { RtlExample } from "./examples/RtlGrid";
+import { useContacts } from "./hooks/useContacts";
+
+export default function RTLGridsRoute() {
+  const contacts = useContacts();
+
+  return (
+    <Box direction="column" gap={4}>
+      <Header section="Other" title="Right to left content" />
+      <div>
+        Grids can also display right to left languages (like Arabic). The grid
+        components check the{" "}
+        <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/dir">
+          <code>dir</code> attribute
+        </ExternalLink>{" "}
+        to determine content directionality.
+      </div>
+      <div>
+        Using the same data as from the previous example, here is a grid
+        rendered right to left.
+      </div>
+      <Block className="h-50 overflow-auto" data-focus-within="bold">
+        {!contacts.length && <LoadingSpinner />}
+        <RtlExample contacts={contacts} />
+      </Block>
+      <Code html={RtlGridMarkdown.html} />
+    </Box>
+  );
+}

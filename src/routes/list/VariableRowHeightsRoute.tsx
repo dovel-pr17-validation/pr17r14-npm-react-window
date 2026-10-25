@@ -1,0 +1,31 @@
+import { Block, Box, Code, Header, LoadingSpinner } from "react-lib-tools";
+import ListVariableRowHeightsMarkdown from "../../../public/generated/examples/ListVariableRowHeights.json";
+import { Example } from "./examples/ListVariableRowHeights";
+import { useCitiesByState } from "./hooks/useCitiesByState";
+
+export default function VariableRowHeightsRoute() {
+  const citiesByState = useCitiesByState();
+
+  return (
+    <Box direction="column" gap={4}>
+      <Header section="Lists" title="Variable row heights" />
+      <div>
+        Lists with rows of different types may require different heights to
+        render.
+      </div>
+      <div>
+        Here is an example of the most populous US postal codes, grouped by
+        state. State "header" rows are taller and are styled differently.
+      </div>
+      <Block className="h-50" data-focus-within="bold">
+        {!citiesByState.length && <LoadingSpinner />}
+        <Example items={citiesByState} />
+      </Block>
+      <div>
+        This list requires a <code>rowHeight</code> function that tells it what
+        height a row should be based on the type of data it contains.
+      </div>
+      <Code html={ListVariableRowHeightsMarkdown.html} />
+    </Box>
+  );
+}

@@ -1,0 +1,232 @@
+{
+  "description": [
+    {
+      "content": "<p>Renders data with many rows.</p>\n"
+    }
+  ],
+  "filePath": "lib/components/list/List.tsx",
+  "name": "List",
+  "props": {
+    "className": {
+      "description": [
+        {
+          "content": "<p>CSS class name.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">className</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">string</span></div>",
+      "name": "className",
+      "required": false
+    },
+    "style": {
+      "description": [
+        {
+          "content": "<p>Optional CSS properties.\nThe list of rows will fill the height defined by this style.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">style</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">CSSProperties</span></div>",
+      "name": "style",
+      "required": false
+    },
+    "children": {
+      "description": [
+        {
+          "content": "<p>Additional content to be rendered within the list (above rows).\nThis property can be used to render things like overlays or tooltips.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">children</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">ReactNode</span></div>",
+      "name": "children",
+      "required": false
+    },
+    "defaultHeight": {
+      "description": [
+        {
+          "content": "<p>Default height of list (in pixels) for initial render, before its actual height has been measured.</p>\n"
+        },
+        {
+          "content": "<p>Lists can't be measured during server rendering, so this value determines how many rows are server rendered.\nIt's recommended to set this to the expected height of the list (or to specify a pixel height via the <code>style</code> prop).</p>\n",
+          "intent": "primary"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">defaultHeight</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">number</span><span class=\"\"> </span><span class=\"tok-operator\">=</span><span class=\"\"> </span><span class=\"tok-number\">0</span></div>",
+      "name": "defaultHeight",
+      "required": false
+    },
+    "defaultScrollOffset": {
+      "description": [
+        {
+          "content": "<p>Initial scroll offset (in pixels) of the list.\nThis value is only applied once, when the list first mounts with at least one row.</p>\n"
+        },
+        {
+          "content": "<p>Server-rendered HTML can't be pre-scrolled, so server rendering always starts at the first row;\nthe default scroll offset is applied once the list hydrates.</p>\n",
+          "intent": "primary"
+        },
+        {
+          "content": "<p>If the list can't be scrolled that far when the offset is applied (e.g. it is hidden with <code>display: none</code>,\nor uses percentage row heights before its height has been measured), the offset is clamped or ignored and not retried.\nSpecify a <code>defaultHeight</code> (or a pixel height via the <code>style</code> prop) when using percentage row heights.</p>\n",
+          "intent": "warning"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">defaultScrollOffset</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">number</span><span class=\"\"> </span><span class=\"tok-operator\">=</span><span class=\"\"> </span><span class=\"tok-number\">0</span></div>",
+      "name": "defaultScrollOffset",
+      "required": false
+    },
+    "listRef": {
+      "description": [
+        {
+          "content": "<p>Ref used to interact with this component's imperative API.</p>\n"
+        },
+        {
+          "content": "<p>This API has imperative methods for scrolling and a getter for the outermost DOM element.</p>\n"
+        },
+        {
+          "content": "<p>The <code>useListRef</code> and <code>useListCallbackRef</code> hooks are exported for convenience in TypeScript projects.</p>\n",
+          "intent": "primary"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">listRef</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">Ref</span><span class=\"\">&#60;</span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-keyword\">readonly</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">element</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">HTMLDivElement</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-keyword\">null</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">scrollToRow</span><span class=\"tok-punctuation\">(</span><span class=\"tok-variableName tok-definition\">config</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">align</span><span class=\"\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-string\">\"auto\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"center\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"end\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"smart\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"start\"</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">behavior</span><span class=\"\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-string\">\"auto\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"instant\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"smooth\"</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">index</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"tok-punctuation\">)</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-keyword\">void</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"\">&#62;</span></div>",
+      "name": "listRef",
+      "required": false
+    },
+    "onResize": {
+      "description": [
+        {
+          "content": "<p>Callback notified when the List's outermost HTMLElement resizes.\nThis may be used to (re)scroll a row into view.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">onResize</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">(</span><span class=\"tok-variableName tok-definition\">size</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">height</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">width</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"tok-punctuation\">,</span><span class=\"\"> </span><span class=\"tok-variableName tok-definition\">prevSize</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">height</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">width</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"tok-punctuation\">)</span><span class=\"\"> </span><span class=\"tok-punctuation\">=&#62;</span><span class=\"\"> </span><span class=\"tok-keyword\">void</span></div>",
+      "name": "onResize",
+      "required": false
+    },
+    "onRowsRendered": {
+      "description": [
+        {
+          "content": "<p>Callback notified when the range of visible rows changes.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">onRowsRendered</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">(</span><span class=\"tok-variableName tok-definition\">visibleRows</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">startIndex</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">stopIndex</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"tok-punctuation\">,</span><span class=\"\"> </span><span class=\"tok-variableName tok-definition\">allRows</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">startIndex</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">stopIndex</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"tok-punctuation\">)</span><span class=\"\"> </span><span class=\"tok-punctuation\">=&#62;</span><span class=\"\"> </span><span class=\"tok-keyword\">void</span></div>",
+      "name": "onRowsRendered",
+      "required": false
+    },
+    "overscanCount": {
+      "description": [
+        {
+          "content": "<p>How many additional rows to render outside of the visible area.\nThis can reduce visual flickering near the edges of a list when scrolling.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">overscanCount</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">number</span><span class=\"\"> </span><span class=\"tok-operator\">=</span><span class=\"\"> </span><span class=\"tok-number\">3</span></div>",
+      "name": "overscanCount",
+      "required": false
+    },
+    "rowComponent": {
+      "description": [
+        {
+          "content": "<p>React component responsible for rendering a row.</p>\n"
+        },
+        {
+          "content": "<p>This component will receive an <code>index</code> and <code>style</code> prop by default.\nAdditionally it will receive prop values passed to <code>rowProps</code>.</p>\n"
+        },
+        {
+          "content": "<p>The prop types for this component are exported as <code>RowComponentProps</code></p>\n",
+          "intent": "primary"
+        }
+      ],
+      "html": "<div><span class=\"tok-labelName\"><span class=\"tok-propertyName\">rowComponent</span></span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">(</span><span class=\"tok-variableName tok-definition\">props</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">ariaAttributes</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">{</span><span class=\"\"> </span><span class=\"tok-string\">\"aria-posinset\"</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-string\">\"aria-setsize\"</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">role</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-string\">\"listitem\"</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">index</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-propertyName tok-definition\">style</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">CSSProperties</span><span class=\"tok-punctuation\">;</span><span class=\"\"> </span><span class=\"tok-punctuation\">}</span><span class=\"\"> </span><span class=\"tok-operator\">&#38;</span><span class=\"\"> </span><span class=\"tok-typeName\">RowProps</span><span class=\"tok-punctuation\">)</span><span class=\"\"> </span><span class=\"tok-punctuation\">=&#62;</span><span class=\"\"> </span><span class=\"tok-variableName\">ReactNode</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-keyword\">null</span></div>",
+      "name": "rowComponent",
+      "required": true
+    },
+    "rowCount": {
+      "description": [
+        {
+          "content": "<p>Number of items to be rendered in the list.</p>\n"
+        }
+      ],
+      "html": "<div><span class=\"tok-labelName\"><span class=\"tok-propertyName\">rowCount</span></span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">number</span></div>",
+      "name": "rowCount",
+      "required": true
+    },
+    "rowHeight": {
+      "description": [
+        {
+          "content": "<p>Row height; the following formats are supported:</p>\n<ul>\n<li>number of pixels (number)</li>\n<li>percentage of the list's current height (string)</li>\n<li>function that returns the row height (in pixels) given an index and <code>rowProps</code></li>\n<li>dynamic row height cache returned by the <code>useDynamicRowHeight</code> hook</li>\n</ul>\n"
+        },
+        {
+          "content": "<p>Percentage heights can't be resolved during server rendering unless a <code>defaultHeight</code> (or a pixel height via the <code>style</code> prop) is specified.</p>\n",
+          "intent": "primary"
+        },
+        {
+          "content": "<p>Dynamic row heights are not as efficient as predetermined sizes.\nIt's recommended to provide your own height values if they can be determined ahead of time.</p>\n",
+          "intent": "warning"
+        }
+      ],
+      "html": "<div><span class=\"tok-labelName\"><span class=\"tok-propertyName\">rowHeight</span></span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">string</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-variableName\">number</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-variableName\">DynamicRowHeight</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-punctuation\">(</span><span class=\"tok-punctuation\">(</span><span class=\"tok-variableName tok-definition\">index</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">,</span><span class=\"\"> </span><span class=\"tok-variableName tok-definition\">cellProps</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">RowProps</span><span class=\"tok-punctuation\">)</span><span class=\"\"> </span><span class=\"tok-punctuation\">=&#62;</span><span class=\"\"> </span><span class=\"tok-variableName\">number</span><span class=\"tok-punctuation\">)</span></div>",
+      "name": "rowHeight",
+      "required": true
+    },
+    "rowKey": {
+      "description": [
+        {
+          "content": "<p>Lists use the row index as a <code>key</code> by default.\nThis prop can provide a custom <code>key</code> value.</p>\n"
+        },
+        {
+          "content": "<p>Custom keys can ensure better UX for sortable or filterable lists,\nparticularly if your row components are stateful.\nRefer to the <a href=\"https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key\">React documentation</a> for more info.</p>\n",
+          "intent": "primary"
+        },
+        {
+          "content": "<p>This prop cannot be auto-memoized because it is called during render.\nIt is important to always <code>useCallback</code> for this prop; do not use an inline function.</p>\n",
+          "intent": "warning"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">rowKey</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-punctuation\">(</span><span class=\"tok-variableName tok-definition\">index</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">number</span><span class=\"tok-punctuation\">,</span><span class=\"\"> </span><span class=\"tok-variableName tok-definition\">data</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-typeName\">RowProps</span><span class=\"tok-punctuation\">)</span><span class=\"\"> </span><span class=\"tok-punctuation\">=&#62;</span><span class=\"\"> </span><span class=\"tok-variableName\">Key</span></div>",
+      "name": "rowKey",
+      "required": false
+    },
+    "rowProps": {
+      "description": [
+        {
+          "content": "<p>Additional props to be passed to the row-rendering component.\nList will automatically re-render rows when values in this object change.</p>\n"
+        },
+        {
+          "content": "<p>This object must not contain <code>ariaAttributes</code>, <code>index</code>, or <code>style</code> props.</p>\n",
+          "intent": "warning"
+        }
+      ],
+      "html": "<div><span class=\"tok-labelName\"><span class=\"tok-propertyName\">rowProps</span></span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">RowProps</span></div>",
+      "name": "rowProps",
+      "required": true
+    },
+    "scrollElement": {
+      "description": [
+        {
+          "content": "<p>Element that scrolls the list, for lists that scroll along with other content (e.g. the page):</p>\n<ul>\n<li>&quot;window&quot; to scroll with the page</li>\n<li>an ancestor element that scrolls (e.g. stored with a <code>useState</code> ref callback); <code>null</code> until it has mounted</li>\n</ul>\n"
+        },
+        {
+          "content": "<p>The list renders at its full height and only renders the rows visible within the scroll element's viewport.\nIts position within the scroll element is measured whenever it renders, scrolls, or resizes,\nand whenever content before it is resized, inserted, or removed (e.g. an image loading above the list).</p>\n<ul>\n<li><code>scrollToRow</code> scrolls the scroll element</li>\n<li><code>defaultHeight</code> is used as the viewport height until the scroll element has been measured (e.g. during server rendering)</li>\n<li>percentage row heights are relative to the scroll element's viewport height</li>\n<li><code>defaultScrollOffset</code> is ignored</li>\n</ul>\n"
+        },
+        {
+          "content": "<p>While the scroll element is <code>null</code>, the list renders the first rows (as it does during server rendering).</p>\n",
+          "intent": "primary"
+        },
+        {
+          "content": "<p>The list itself doesn't scroll, so its <code>onScroll</code> handler isn't called;\nlisten to the scroll element's &quot;scroll&quot; events instead (or use the <code>useIsScrolling</code> hook).</p>\n",
+          "intent": "warning"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">scrollElement</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">HTMLElement</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-string\">\"window\"</span><span class=\"\"> </span><span class=\"tok-operator\">|</span><span class=\"\"> </span><span class=\"tok-keyword\">null</span></div>",
+      "name": "scrollElement",
+      "required": false
+    },
+    "tagName": {
+      "description": [
+        {
+          "content": "<p>Can be used to override the root HTML element rendered by the List component.\nThe default value is &quot;div&quot;, meaning that List renders an HTMLDivElement as its root.</p>\n"
+        },
+        {
+          "content": "<p>In most use cases the default ARIA roles are sufficient and this prop is not needed.</p>\n",
+          "intent": "warning"
+        }
+      ],
+      "html": "<div><span class=\"tok-variableName\"><span class=\"tok-propertyName\">tagName</span></span><span class=\"tok-operator\">?</span><span class=\"tok-punctuation\">:</span><span class=\"\"> </span><span class=\"tok-variableName\">keyof </span><span class=\"\">IntrinsicElements </span><span class=\"tok-operator\">=</span><span class=\"\"> </span><span class=\"tok-string\">\"div\"</span><span class=\"\"> </span><span class=\"tok-keyword\">as</span><span class=\"\"> </span><span class=\"tok-typeName\">TagName</span></div>",
+      "name": "tagName",
+      "required": false
+    }
+  }
+}
